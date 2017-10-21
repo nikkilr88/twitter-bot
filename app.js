@@ -38,19 +38,21 @@ function retweet(tweetId) {
 function followed(event) {
     var userId = event.source.id_str;
     var screenName = event.source.screen_name;
+    var bot = event.target.screen_name;
+    
     console.log(event)
 
-    if (userId !== "gitLit000") {
-        Bot.post('friendships/create', { screen_name: screenName }, function(err, data, response) {
-            if (err) {
-                console.log("Something went wrong... :(")
-                console.log(err);
-            }
-            else {
-                console.log("Followed back!");
-            }
-        });
-    }
+    // if (userId !== "gitLit000") {
+    //     Bot.post('friendships/create', { screen_name: screenName }, function(err, data, response) {
+    //         if (err) {
+    //             console.log("Something went wrong... :(")
+    //             console.log(err);
+    //         }
+    //         else {
+    //             console.log("Followed back!");
+    //         }
+    //     });
+    // }
 }
 
 //Check if tweet is retweet
