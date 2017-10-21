@@ -2,10 +2,10 @@ var Twit = require("twit"),
     hashtags = require("./helper-files/hashtags");
 
 var Bot = new Twit({
-    consumer_key: process.env.consumer_key,
-    consumer_secret: process.env.consumer_secret,
-    access_token: process.env.access_token,
-    access_token_secret: process.env.access_token_secret
+    consumer_key: 'tH02ixMNnsfLlbP1N6dIcX2zu', //process.env.consumer_key,
+    consumer_secret: 'TdeRvhO75zFFsK6bEgQMPwvo6zz67tL3oovHOIA15SueON0iAE', //process.env.consumer_secret,
+    access_token: '921765201191596032-qUTk13T10ypGdzPzGVTGR63ALZ02vuA' ,//process.env.access_token,
+    access_token_secret: 'TFNko2PnEEaxA6EsR2s8TojmaoNaQoexbkr2e0Jkv1ByP' //process.env.access_token_secret
 });
 
 var tweetStream = Bot.stream('statuses/filter', { track: hashtags });
@@ -36,23 +36,21 @@ function retweet(tweetId) {
 
 //Follow users back
 function followed(event) {
-    var userId = event.source.id_str;
     var screenName = event.source.screen_name;
-    var bot = event.target.screen_name;
-    
-    console.log(event[1].screen_name);
 
-    // if (userId !== "gitLit000") {
-    //     Bot.post('friendships/create', { screen_name: screenName }, function(err, data, response) {
-    //         if (err) {
-    //             console.log("Something went wrong... :(")
-    //             console.log(err);
-    //         }
-    //         else {
-    //             console.log("Followed back!");
-    //         }
-    //     });
-    // }
+    console.log(event);
+
+    if (screenName !== "gitLit000") {
+        Bot.post('friendships/create', { screen_name: screenName }, function(err, data, response) {
+            if (err) {
+                console.log("Something went wrong... :(")
+                console.log(err);
+            }
+            else {
+                console.log("Followed back!");
+            }
+        });
+    }
 }
 
 //Check if tweet is retweet
