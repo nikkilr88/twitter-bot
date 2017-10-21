@@ -37,17 +37,17 @@ function retweet(tweetId) {
 //Follow users back
 function followed(event){
     var userId = event.source.id_str;
-    var screenName = event.screen_name;
+    var screenName = event.source.screen_name;
     console.log(event)
     
-    // Bot.post('friendships/create', {screen_name: screenName}, function(err, data, response){
-    //     if(err) {
-    //         console.log("Something went wrong... :(")
-    //         console.log(err);
-    //     } else {
-    //         console.log("Followed back!");
-    //     }
-    // });
+    Bot.post('friendships/create', {screen_name: screenName}, function(err, data, response){
+        if(err) {
+            console.log("Something went wrong... :(")
+            console.log(err);
+        } else {
+            console.log("Followed back!");
+        }
+    });
 }
 
 //Check if tweet is retweet
