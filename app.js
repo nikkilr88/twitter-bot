@@ -2,7 +2,12 @@ var Twit = require("twit"),
     config = require("./helper-files/config.js"),
     hashtags = require("./helper-files/hashtags");
 
-var Bot = new Twit(config);
+var Bot = new Twit({
+    consumer_key: consumer_key,
+    consumer_secret: consumer_secret,
+    access_token: access_token,
+    access_token_secret: access_token_secretco
+});
 
 var tweetStream = Bot.stream('statuses/filter', { track: hashtags });
 var followStream = Bot.stream('user');
