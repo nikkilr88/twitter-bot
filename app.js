@@ -39,6 +39,8 @@ function followed(event) {
 
     var screenName = event.source.screen_name;
 
+    console.log(event);
+
     if (screenName !== "gitLit000") {
         Bot.post('friendships/create', { screen_name: screenName }, function(err, data, response) {
             if (err) {
