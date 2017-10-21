@@ -41,6 +41,7 @@ function followed(event){
     Bot.post('friendships/create', {id: userId}, function(err, data, response){
         if(err) {
             console.log("Something went wrong... :(")
+            console.log(err);
         } else {
             console.log("Followed back!");
         }
