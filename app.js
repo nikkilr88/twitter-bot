@@ -6,7 +6,7 @@ var Bot = new Twit({
     consumer_key: ENV[consumer_key],
     consumer_secret: ENV[consumer_secret],
     access_token: ENV[access_token],
-    access_token_secret: ENV[access_token_secretco]
+    access_token_secret: ENV[access_token_secret]
 });
 
 var tweetStream = Bot.stream('statuses/filter', { track: hashtags });
