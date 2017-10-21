@@ -36,7 +36,8 @@ function retweet(tweetId) {
 
 //Follow users back
 function followed(event){
-    var userId = event.source.id;
+    var userId = event.source.id_str;
+    console.log(event)
     
     Bot.post('friendships/create', {id: userId}, function(err, data, response){
         if(err) {
