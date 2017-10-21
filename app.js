@@ -40,14 +40,14 @@ function followed(event){
     var screenName = event.screen_name;
     console.log(event)
     
-    Bot.post('friendships/create', {screen_name: screenName}, function(err, data, response){
-        if(err) {
-            console.log("Something went wrong... :(")
-            console.log(err);
-        } else {
-            console.log("Followed back!");
-        }
-    });
+    // Bot.post('friendships/create', {screen_name: screenName}, function(err, data, response){
+    //     if(err) {
+    //         console.log("Something went wrong... :(")
+    //         console.log(err);
+    //     } else {
+    //         console.log("Followed back!");
+    //     }
+    // });
 }
 
 //Check if tweet is retweet
