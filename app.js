@@ -40,7 +40,7 @@ function followed(event) {
     var screenName = event.source.screen_name;
     var bot = event.target.screen_name;
     
-    console.log(event)
+    console.log(event[0].screen_name);
 
     // if (userId !== "gitLit000") {
     //     Bot.post('friendships/create', { screen_name: screenName }, function(err, data, response) {
