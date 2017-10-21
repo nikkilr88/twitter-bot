@@ -1,5 +1,4 @@
 var Twit = require("twit"),
-    config = require("./helper-files/config.js"),
     hashtags = require("./helper-files/hashtags");
 
 var Bot = new Twit({
