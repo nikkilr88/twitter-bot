@@ -66,6 +66,6 @@ function isReply(tweet) {
 
 //Function to limit #100daysofcode retweets
 function coinFlip(){
-  return Math.floor(Math.random() * 3)
+  return Math.floor(Math.random() * 4)
 }
 
