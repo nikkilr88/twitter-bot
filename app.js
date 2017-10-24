@@ -32,8 +32,6 @@ DOCstream.on('tweet', function(tweet) {
     //Check if tweet begins with RT
     var RT = new RegExp("^RT", "i");
     
-    console.log("100days: ", tweet.text);
-    
     //Retweet if tweet is not reply, doesn't start with RT and coinFlip returns 0
     if (!isReply(tweet) && !tweet.text.match(RT) && coinFlip() === 0){
         var tweetId = tweet.id_str;
