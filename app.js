@@ -1,6 +1,6 @@
 var Twit = require("twit"),
     request = require("request"),
-    keys = require("./helper-files/keys"),
+    // keys = require("./helper-files/keys"),
     tracking = require("./helper-files/track");
 
 //Bot config
