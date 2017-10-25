@@ -55,7 +55,7 @@ setInterval(function() {
             }
         }
     });
-}, 1000 * 60 * 60);
+}, 1000 * 60 * 60 * 6);
 
 //Retweet tweets of followed hastags and users
 function retweet(tweetId) {
