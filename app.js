@@ -1,6 +1,6 @@
 var Twit = require("twit"),
     request = require("request"),
-    keys = require("./helper-files/keys"),
+    // keys = require("./helper-files/keys"),
     tracking = require("./helper-files/track");
 
 var baseURL = 'https://www.youtube.com/watch?v=',
@@ -8,10 +8,10 @@ var baseURL = 'https://www.youtube.com/watch?v=',
   
 //Bot config
 var Bot = new Twit({
-    consumer_key: keys.consumer_key, //process.env.consumer_key,
-    consumer_secret: keys.consumer_secret, //process.env.consumer_secret,
-    access_token: keys.access_token, //process.env.access_token,
-    access_token_secret: keys.access_token_secret //process.env.access_token_secret
+    consumer_key: /*keys.consumer_key,*/ process.env.consumer_key,
+    consumer_secret: /*keys.consumer_secret,*/ process.env.consumer_secret,
+    access_token: /*keys.access_token,*/ process.env.access_token,
+    access_token_secret: /*keys.access_token_secret*/ process.env.access_token_secret
 });
 
 //Tweet stream config to follow users and hashtags
@@ -33,7 +33,7 @@ stream.on('tweet', function(tweet) {
 setInterval(function() {
 
     //Get video data from random YT channels in array
-    request('https://www.googleapis.com/youtube/v3/search?key=' + keys.yt /*process.env.yt_key*/ + '&channelId=' + tracking.ytChannels[rand(4)] + '&part=snippet,id&order=date&maxResults=50', function(err, res, body) {
+    request('https://www.googleapis.com/youtube/v3/search?key=' + /*keys.yt*/ process.env.yt_key + '&channelId=' + tracking.ytChannels[rand(4)] + '&part=snippet,id&order=date&maxResults=50', function(err, res, body) {
         if (err) {
             console.log(err);
         }
