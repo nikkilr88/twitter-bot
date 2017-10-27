@@ -23,7 +23,7 @@ stream.on('tweet', function(tweet) {
     console.log(tweet.text);
 
     //Retweet if tweet is not a reply and not that one annoying user
-    if (!isReply(tweet) && tweet.user.id_str !== '872974956249960448') {
+    if (!isReply(tweet) && tweet.user.id_str !== '872974956249960448' && tweet.user.id_str !== '842956176958476289') {
         
         console.log('New tweet: ' + tweet.text + '\n');
         retweet(tweet.id_str);
