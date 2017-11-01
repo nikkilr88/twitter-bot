@@ -3,18 +3,11 @@ var Twit = require('twit'),
     // keys = require(''./helper-files/keys'),
     tracking = require('./helper-files/track'),
     blocked = require('./helper-files/block'),
-    Bot = require('./config/bot')
+    Bot = require('./config/bot'),
+    functions = require('./helper-files/tweet-functions');
 
 var baseURL = 'https://www.youtube.com/watch?v=',
     RT = /^RT/i;
-  
-//Bot config
-// var Bot = new Twit({
-//     consumer_key: /*keys.consumer_key,*/ process.env.consumer_key,
-//     consumer_secret: /*keys.consumer_secret,*/ process.env.consumer_secret,
-//     access_token: /*keys.access_token,*/ process.env.access_token,
-//     access_token_secret: /*keys.access_token_secret*/ process.env.access_token_secret
-// });
 
 //Tweet stream config to follow users and hashtags
 var stream = Bot.stream('statuses/filter', { track: tracking.hashtags, follow: tracking.users });
@@ -28,7 +21,7 @@ stream.on('tweet', function(tweet) {
     if (!isReply(tweet) && !blocked.includes(tweet.user.id_str)) {
         
         console.log('New tweet: ' + tweet.text + '\n');
-        retweet(tweet.id_str);
+        functions.retweet(tweet.id_str);
     }
 });
 
@@ -58,18 +51,18 @@ setInterval(function() {
 }, 1000 * 60 * 60 * 6);
 
 //Retweet tweets of followed hastags and users
-function retweet(tweetId) {
+// function retweet(tweetId) {
 
-    Bot.post('statuses/retweet/:id', { id: tweetId }, function(err, data, response) {
-        if (err) {
-            console.log(tweetId);
-            console.log(err.message);
-        }
-        else {
-            console.log('Retweeted! :)' + data.text + '\n');
-        }
-    });
-}
+//     Bot.post('statuses/retweet/:id', { id: tweetId }, function(err, data, response) {
+//         if (err) {
+//             console.log(tweetId);
+//             console.log(err.message);
+//         }
+//         else {
+//             console.log('Retweeted! :)' + data.text + '\n');
+//         }
+//     });
+// }
 
 //New tutorial post
 function postVid(id, status) {
