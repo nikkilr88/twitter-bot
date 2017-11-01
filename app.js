@@ -1,19 +1,20 @@
-var Twit = require("twit"),
-    request = require("request"),
-    // keys = require("./helper-files/keys"),
-    tracking = require("./helper-files/track"),
-    blocked = require("./helper-files/block");
+var Twit = require('twit'),
+    request = require('request'),
+    // keys = require(''./helper-files/keys'),
+    tracking = require('./helper-files/track'),
+    blocked = require('./helper-files/block'),
+    Bot = require('./config/bot')
 
 var baseURL = 'https://www.youtube.com/watch?v=',
     RT = /^RT/i;
   
 //Bot config
-var Bot = new Twit({
-    consumer_key: /*keys.consumer_key,*/ process.env.consumer_key,
-    consumer_secret: /*keys.consumer_secret,*/ process.env.consumer_secret,
-    access_token: /*keys.access_token,*/ process.env.access_token,
-    access_token_secret: /*keys.access_token_secret*/ process.env.access_token_secret
-});
+// var Bot = new Twit({
+//     consumer_key: /*keys.consumer_key,*/ process.env.consumer_key,
+//     consumer_secret: /*keys.consumer_secret,*/ process.env.consumer_secret,
+//     access_token: /*keys.access_token,*/ process.env.access_token,
+//     access_token_secret: /*keys.access_token_secret*/ process.env.access_token_secret
+// });
 
 //Tweet stream config to follow users and hashtags
 var stream = Bot.stream('statuses/filter', { track: tracking.hashtags, follow: tracking.users });
@@ -34,7 +35,9 @@ stream.on('tweet', function(tweet) {
 setInterval(function() {
 
     //Get video data from random YT channels in array
-    request('https://www.googleapis.com/youtube/v3/search?key=' + /*keys.yt*/ process.env.yt_key + '&channelId=' + tracking.ytChannels[rand(4)] + '&part=snippet,id&order=date&maxResults=50', function(err, res, body) {
+    var url = 'https://www.googleapis.com/youtube/v3/search?key=' + /*keys.yt*/ process.env.yt_key + '&channelId=' + tracking.ytChannels[rand(4)] + '&part=snippet,id&order=date&maxResults=50';
+    
+    request(url, function(err, res, body) {
         if (err) {
             console.log(err);
         }
