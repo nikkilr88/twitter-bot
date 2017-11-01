@@ -13,3 +13,5 @@ functions.retweet = function(tweetId) {
         }
     });
 };
+
+module.exports = functions;
