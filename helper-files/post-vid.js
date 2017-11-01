@@ -1,6 +1,6 @@
 var request = require('request'),
-    tracking = require('track'),
-    functions = require('tweet-functions'),
+    tracking = require('./track'),
+    functions = require('./tweet-functions'),
     baseURL = 'https://www.youtube.com/watch?v=';
 
 module.exports = setInterval(function() {
