@@ -3,12 +3,14 @@ var request = require('request'),
     functions = require('./tweet-functions'),
     baseURL = 'https://www.youtube.com/watch?v=';
 
-module.exports = setInterval(function() {
+var url = 'https://www.googleapis.com/youtube/v3/search?key=' + /*keys.yt*/ process.env.yt_key + '&channelId=' + tracking.ytChannels[rand(4)] + '&part=snippet,id&order=date&maxResults=50';
 
-    //Get video data from random YT channels in array
-    var url = 'https://www.googleapis.com/youtube/v3/search?key=' + /*keys.yt*/ process.env.yt_key + '&channelId=' + tracking.ytChannels[rand(4)] + '&part=snippet,id&order=date&maxResults=50';
-    
-    request(url, function(err, res, body) {
+//Get random number
+function rand(max) {
+    return Math.floor(Math.random() * max);
+}
+
+module.exports = request(url, function(err, res, body) {
         if (err) {
             console.log(err);
         }
@@ -25,9 +27,3 @@ module.exports = setInterval(function() {
             }
         }
     });
-}, 1000 * 60 * 5);
-
-//Get random number
-function rand(max) {
-    return Math.floor(Math.random() * max);
-}
