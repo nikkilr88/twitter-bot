@@ -18,7 +18,7 @@ stream.on('tweet', function(tweet) {
     console.log(tweet.text);
 
     //Retweet if tweet is not a reply and not that one annoying user
-    if (!isReply(tweet) && !blocked.includes(tweet.user.id_str)) {
+    if (!functions.isReply(tweet) && !blocked.includes(tweet.user.id_str)) {
         
         console.log('New tweet: ' + tweet.text + '\n');
         functions.retweet(tweet.id_str);
@@ -44,53 +44,11 @@ setInterval(function() {
             //If there is a video id, pass it to the function
             if (vidId) {
 
-                postVid(vidId, status);
+                functions.postVid(vidId, status);
             }
         }
     });
 }, 1000 * 60 * 60 * 6);
-
-//Retweet tweets of followed hastags and users
-// function retweet(tweetId) {
-
-//     Bot.post('statuses/retweet/:id', { id: tweetId }, function(err, data, response) {
-//         if (err) {
-//             console.log(tweetId);
-//             console.log(err.message);
-//         }
-//         else {
-//             console.log('Retweeted! :)' + data.text + '\n');
-//         }
-//     });
-// }
-
-//New tutorial post
-function postVid(id, status) {
-
-    console.log(status);
-
-    Bot.post('statuses/update', { status: status }, function(err, data, response) {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            console.log("Sucessfully posted video! :)");
-        }
-    });
-};
-
-//Check if tweet is retweet or reply
-function isReply(tweet) {
-    if (RT.test(tweet.text) ||
-        tweet.is_quote_status ||
-        tweet.retweeted_status ||
-        tweet.in_reply_to_status_id ||
-        tweet.in_reply_to_status_id_str ||
-        tweet.in_reply_to_user_id ||
-        tweet.in_reply_to_user_id_str ||
-        tweet.in_reply_to_screen_name)
-        return true
-}
 
 //Get random number
 function rand(max) {
