@@ -2,7 +2,7 @@ var Twit = require("twit"),
     request = require("request"),
     // keys = require("./helper-files/keys"),
     tracking = require("./helper-files/track"),
-    blocked = require("./helper-flies/block");
+    blocked = require("./helper-files/block");
 
 var baseURL = 'https://www.youtube.com/watch?v=',
     RT = /^RT/i;
