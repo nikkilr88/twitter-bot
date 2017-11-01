@@ -15,7 +15,7 @@ stream.on('tweet', function(tweet) {
     console.log(tweet.text);
 
     //Retweet if tweet is not a reply and not that one annoying user
-    if (!functions.isReply(tweet) && !tracking.blocked.includes(tweet.user.id_str)) {
+    if (!functions.isReply(tweet) && !tracking.block.includes(tweet.user.id_str)) {
         
         console.log('New tweet: ' + tweet.text + '\n');
         functions.retweet(tweet.id_str);
