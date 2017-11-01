@@ -10,7 +10,8 @@ function rand(max) {
     return Math.floor(Math.random() * max);
 }
 
-module.exports = request(url, function(err, res, body) {
+module.exports = function() {
+    request(url, function(err, res, body) {
         if (err) {
             console.log(err);
         }
@@ -27,3 +28,5 @@ module.exports = request(url, function(err, res, body) {
             }
         }
     });
+
+}
