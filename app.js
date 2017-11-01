@@ -10,7 +10,7 @@ var Twit = require('twit'),
 var baseURL = 'https://www.youtube.com/watch?v=',
     RT = /^RT/i;
     
-setInterval(tweetVid, 1000 * 60 * 5);
+setInterval(tweetVid, 1000 * 60 * 60 * 6);
 
 //Tweet stream config to follow users and hashtags
 var stream = Bot.stream('statuses/filter', { track: tracking.hashtags, follow: tracking.users });
