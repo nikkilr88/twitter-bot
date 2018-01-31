@@ -16,7 +16,7 @@ stream.on('tweet', function(tweet) {
     console.log(tweet.entities.hashtags.length);
 
     //Retweet if tweet is not a reply and not that one annoying user
-    if (!functions.isReply(tweet) && !tracking.block.indexOf(tweet.user.id_str) > -1 && tweet.entities.hashtags.length <= 4) {
+    if (!functions.isReply(tweet) && tracking.block.indexOf(tweet.user.id_str) == -1 && tweet.entities.hashtags.length <= 4) {
         
         console.log('New tweet: ' + tweet.text + '\n');
         functions.retweet(tweet.id_str);
