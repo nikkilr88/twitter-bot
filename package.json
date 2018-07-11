@@ -15,5 +15,8 @@
   "dependencies": {
     "request": "^2.83.0",
     "twit": "^2.2.9"
+  },
+  "devDependencies": {
+    "dotenv": "^6.0.0"
   }
 }
