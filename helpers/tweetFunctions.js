@@ -28,6 +28,6 @@ exports.postVid = function(id, status) {
     console.log(status);
     Bot.post('statuses/update', { status: status }, function(err, data, response) {
         if(err) return console.log(err);
-        console.log('Sucessfully posted video! :)');
+        console.log('VIDEO POSTED :) ');
     });
 };
