@@ -5,8 +5,8 @@ const Bot = require('./config/bot'),
       { retweet, isReply } = require('./helpers/tweetFunctions'),
       tweetVid = require('./helpers/getVid');
 
-//Post random YT coding video every 6 hours
-setInterval(tweetVid, 1000 * 60 * 60 * 6);
+//Post random YT coding video
+setInterval(tweetVid, 1000 * 60 * 60 * 3);
 
 //Tweet stream config to follow users and hashtags
 var stream = Bot.stream('statuses/filter', { track: hashtags, follow: users });
