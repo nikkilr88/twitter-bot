@@ -13,16 +13,16 @@ function rand(max) {
 module.exports = function() {
     request(url, function(err, res, body) {
         if(err) return console.log(err);
-        
+    
         let data = JSON.parse(body),
-            randVid = rand(50),
+            randVid = rand(data.items.length),
             title = data.items[randVid].snippet.title,
             vidId = data.items[randVid].id.videoId,
             status = title + " " + baseURL + vidId + ' ' + '#100DaysOfCode';
+            console.log('VIDEO: ', status);
 
         //If there is a video id, pass it to the function
-        if (vidId) {
-            postVid(vidId, status);
-        }
+        if (vidId) return postVid(vidId, status);
+        
     });
 };
