@@ -1,9 +1,9 @@
 require('dotenv').config();
 
 const Bot = require('./config/bot'),
-      { hashtags, users, block } = require('./helper-files/track'),
-      { retweet, isReply } = require('./helper-files/tweet-functions'),
-      tweetVid = require('./helper-files/tweet-vid');
+      { hashtags, users, block } = require('./helpers/track'),
+      { retweet, isReply } = require('./helpers/tweetFunctions'),
+      tweetVid = require('./helpers/getVid');
 
 //Post random YT coding video every 6 hours
 setInterval(tweetVid, 1000 * 60 * 60 * 6);
@@ -16,7 +16,7 @@ stream.on('tweet', function(tweet) {
     console.log('INCOMING: ', tweet.text);
     //Retweet if tweet is not a reply and not that one annoying user
     if (!isReply(tweet) && block.indexOf(tweet.user.id_str) == -1) {
-        
+
         console.log('!ISREPLY: ', tweet);
         let extended = tweet.extended_tweet,
             retweetedExtended = tweet.retweeted_status;
