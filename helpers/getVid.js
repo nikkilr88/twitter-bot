@@ -3,7 +3,7 @@ const request = require('request'),
       { postVid } = require('./tweetFunctions'),
       baseURL = 'https://www.youtube.com/watch?v=';
     
-let url = 'https://www.googleapis.com/youtube/v3/search?key=' + process.env.yt_key + '&channelId=' + ytChannels[rand(4)] + '&part=snippet,id&order=date&maxResults=50';
+let url = `https://www.googleapis.com/youtube/v3/search?key=${process.env.yt_key}&channelId=${ytChannels[rand(4)]}&part=snippet,id&order=date&maxResults=50`;
 
 //Get random number
 function rand(max) {
@@ -18,11 +18,10 @@ module.exports = function() {
             randVid = rand(data.items.length),
             title = data.items[randVid].snippet.title,
             vidId = data.items[randVid].id.videoId,
-            status = title + " " + baseURL + vidId + ' ' + '#100DaysOfCode';
+            status = `${title} ${baseURL}${vidId} #100DaysOfCode`;
             console.log('VIDEO: ', status);
 
         //If there is a video id, pass it to the function
         if (vidId) return postVid(vidId, status);
-        
     });
 };
