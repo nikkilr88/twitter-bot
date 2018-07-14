@@ -6,7 +6,7 @@ const Bot = require('./config/bot'),
       tweetVid = require('./helpers/getVid');
 
 //Post random YT coding video
-setInterval(tweetVid, 1000 * 60 * 60 * 3);
+setInterval(tweetVid, 1000 * 60 * 60 * 2);
 
 //Tweet stream config to follow users and hashtags
 var stream = Bot.stream('statuses/filter', { track: hashtags, follow: users });
