@@ -4,7 +4,7 @@ var Bot = require('../config/bot');
 exports.retweet = function(tweetId) {
     Bot.post('statuses/retweet/:id', { id: tweetId }, function(err, data, response) {
         if(err) return console.log(tweetId, err.message);
-        console.log('Retweeted! :)' + data.text + '\n');
+        console.log('RETWEETED :) ' + data.text + '\n');
     });
 };
 
@@ -25,7 +25,6 @@ exports.isReply =  function(tweet) {
 
 //New tutorial post
 exports.postVid = function(id, status) {
-    console.log(status);
     Bot.post('statuses/update', { status: status }, function(err, data, response) {
         if(err) return console.log(err);
         console.log('VIDEO POSTED :) ');
