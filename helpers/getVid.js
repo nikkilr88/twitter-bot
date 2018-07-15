@@ -24,6 +24,6 @@ module.exports = function() {
             console.log('VIDEO: ', status);
 
         //If there is a video id, pass it to the function
-        // if(vidId) return postVid(vidId, status);
+        if(vidId) return postVid(vidId, status);
     });
 };
