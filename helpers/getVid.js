@@ -2,8 +2,6 @@ const request = require('request'),
       {  ytChannels } = require('./track'),
       { postVid } = require('./tweetFunctions'),
       baseURL = 'https://www.youtube.com/watch?v=';
-    
-let url = `https://www.googleapis.com/youtube/v3/search?key=${process.env.yt_key}&channelId=${ytChannels[rand(ytChannels.length)]}&part=snippet,id&order=viewCount&maxResults=50`;
 
 //Get random number
 function rand(max) {
@@ -12,6 +10,13 @@ function rand(max) {
 
 module.exports = function() {
     console.log('GETTING VIDEO...');
+
+    let url = 'https://www.googleapis.com/youtube/v3/search?key='+
+               process.env.yt_key+ 
+               '&channelId='+ 
+               ytChannels[rand(ytChannels.length)]+ 
+               '&part=snippet,id&order=viewCount&maxResults=50';
+
     request(url, function(err, res, body) {
         if(err || res.statusCode !== 200) return console.log('UNABLE TO POST VIDEO');
         
@@ -24,6 +29,6 @@ module.exports = function() {
             console.log('VIDEO: ', status);
 
         //If there is a video id, pass it to the function
-        if(vidId) return postVid(vidId, status);
+        if(vidId) postVid(vidId, status);
     });
 };
