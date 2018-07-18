@@ -1,12 +1,8 @@
 const request = require('request'),
+      { rand } = require('./utils'),
       {  ytChannels } = require('./track'),
       { postVid } = require('./tweetFunctions'),
       baseURL = 'https://www.youtube.com/watch?v=';
-
-//Get random number
-function rand(max) {
-    return Math.floor(Math.random() * max);
-}
 
 module.exports = function() {
     console.log('GETTING VIDEO...');
