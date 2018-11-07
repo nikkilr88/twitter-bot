@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 
 const Bot = require('./config/bot'),
       { setIntervalImediate } = require('./helpers/utils'),  
