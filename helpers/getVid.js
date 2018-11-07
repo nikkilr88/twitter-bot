@@ -21,7 +21,7 @@ module.exports = function() {
             title = data.items[randVid].snippet.title,
             vidId = data.items[randVid].id.videoId,
             channel = data.items[randVid].snippet.channelTitle,
-            status = `${title} (${channel}) \n${baseURL}${vidId} \n\n#100DaysOfCode #301DaysOfCode`;
+            status = `${title} | ${channel} \n${baseURL}${vidId} \n\n#100DaysOfCode #301DaysOfCode`;
             console.log('VIDEO: ', status);
 
         //If there is a video id, pass it to the function
